@@ -29,7 +29,7 @@ public class Human implements Moveable {
         return name;
     }
 
-    public void isOvercomed(Obstructive o) {
+    public void overcome(Obstructive o) {
         if (o instanceof Track) {
             if (getDistance() >= o.obstruct()) {
                 log.info("Human " + this.name + " can run");

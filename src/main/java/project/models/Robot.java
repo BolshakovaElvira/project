@@ -29,7 +29,7 @@ public class Robot implements Moveable {
         return name;
     }
 
-    public void isOvercomed(Obstructive o) {
+    public void overcome(Obstructive o) {
         if (o instanceof Track) {
             if (getDistance() >= o.obstruct()) {
                 log.info("Robot " + this.name + " can run");

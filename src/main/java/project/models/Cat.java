@@ -26,7 +26,7 @@ public class Cat implements Moveable {
         log.info("Cat " + this.name + " jump " + this.height);
     }
 
-    public void isOvercomed(Obstructive o) {
+    public void overcome(Obstructive o) {
         if (o instanceof Track) {
             if (getDistance() >= o.obstruct()) {
                 log.info("Cat " + this.name + " can run");

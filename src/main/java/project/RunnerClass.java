@@ -30,7 +30,7 @@ public class RunnerClass {
     public static void runGame(List<Moveable> players, List<Obstructive> bariers) {
         for (int i = 0; i < players.size(); i++) {
             for (int j = 0; j < bariers.size(); j++) {
-                players.get(i).isOvercomed(bariers.get(j));
+                players.get(i).overcome(bariers.get(j));
             }
         }
     }
