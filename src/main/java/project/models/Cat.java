@@ -17,36 +17,16 @@ public class Cat implements Moveable {
     }
 
     @Override
-    public void run(int distance) {
+    public void run() {
         log.info("Cat " + this.name + " run " + this.distance);
     }
 
     @Override
-    public void jump(int height) {
+    public void jump() {
         log.info("Cat " + this.name + " jump " + this.height);
     }
 
-    public void overcome(List<Object> list) {
-        for (Object o : list) {
-            if (o instanceof Wall) {
-                if (this.height >= ((Wall) o).getHeight()) {
-                    this.jump(((Wall) o).getHeight());
-                    this.height -= ((Wall) o).getHeight();
-                } else {
-                    this.jump(this.getHeight());
-                    this.height = 0;
-                }
-            } else {
-                if (this.distance >= ((Track) o).getDistance()) {
-                    this.run(((Track) o).getDistance());
-                    this.distance -= ((Track) o).getDistance();
-                } else {
-                    this.run(this.getDistance());
-                    this.distance = 0;
-                }
-            }
-        }
-    }
+
 
     public int getDistance() {
         return distance;
@@ -54,5 +34,9 @@ public class Cat implements Moveable {
 
     public int getHeight() {
         return height;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -4,9 +4,11 @@ import java.util.List;
 
 public interface Moveable {
 
-    void run(int distance);
+    void run();
 
-    void jump(int height);
+    void jump();
 
-    void overcome(List<Object> list);
+    int getDistance();
+
+    int getHeight();
 }
