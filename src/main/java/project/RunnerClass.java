@@ -18,26 +18,19 @@ public class RunnerClass {
         players.add(human);
 
         Track track = new Track(3);
-        Wall wall = new Wall(2);
+        Wall wall = new Wall(1);
 
-        //тут возможно стоит сделать интерфейс препядствующие или абстрактный класс Препядствие,
-        // чтобы список был не из Object
-        List<Barier> bariers = new ArrayList<>();
+        List<Obstructive> bariers = new ArrayList<>();
         bariers.add(track);
         bariers.add(wall);
 
         runGame(players, bariers);
     }
 
-    public static void runGame(List<Moveable> players, List<Barier> bariers) {
-        for (int i = 0; i < bariers.size(); i++) {
-            for (int j = 0; j < players.size(); j++) {
-                if(bariers.get(i) instanceof Wall){
-                    ((Wall) bariers.get(i)).isOvercomed(players.get(j));
-                }
-                if (bariers.get(i) instanceof Track){
-                    ((Track) bariers.get(i)).isOvercomed(players.get(j));
-                }
+    public static void runGame(List<Moveable> players, List<Obstructive> bariers) {
+        for (int i = 0; i < players.size(); i++) {
+            for (int j = 0; j < bariers.size(); j++) {
+                players.get(i).isOvercomed(bariers.get(j));
             }
         }
     }

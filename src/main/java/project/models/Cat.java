@@ -26,7 +26,21 @@ public class Cat implements Moveable {
         log.info("Cat " + this.name + " jump " + this.height);
     }
 
-
+    public void isOvercomed(Obstructive o) {
+        if (o instanceof Track) {
+            if (getDistance() >= o.obstruct()) {
+                log.info("Cat " + this.name + " can run");
+            } else {
+                log.info("Cat " + this.name + " cant run");
+            }
+        } else if (o instanceof Wall) {
+            if (getHeight() >= o.obstruct()) {
+                log.info("Cat " + this.name + " can jump");
+            } else {
+                log.info("Cat " + this.name + " cant jump");
+            }
+        }
+    }
 
     public int getDistance() {
         return distance;

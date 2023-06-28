@@ -29,6 +29,22 @@ public class Human implements Moveable {
         return name;
     }
 
+    public void isOvercomed(Obstructive o) {
+        if (o instanceof Track) {
+            if (getDistance() >= o.obstruct()) {
+                log.info("Human " + this.name + " can run");
+            } else {
+                log.info("Human " + this.name + " cant run");
+            }
+        } else if (o instanceof Wall) {
+            if (getHeight() >= o.obstruct()) {
+                log.info("Human " + this.name + " can jump");
+            } else {
+                log.info("Human " + this.name + " cant jump");
+            }
+        }
+    }
+
     public int getDistance() {
         return distance;
     }
