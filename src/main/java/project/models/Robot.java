@@ -29,20 +29,26 @@ public class Robot implements Moveable {
         return name;
     }
 
-    public void overcome(Obstructive o) {
+    @Override
+    public boolean overcome(Obstructive o) {
         if (o instanceof Track) {
             if (getDistance() >= o.obstruct()) {
-                log.info("Robot " + this.name + " can run");
+                log.info("Robot " + this.name + " can run " + ((Track) o).getDistance());
+                return true;
             } else {
-                log.info("Robot " + this.name + " cant run");
+                log.info("Robot " + this.name + " cant run. Still need " + (((Track) o).getDistance() - this.getDistance()));
+                return false;
             }
         } else if (o instanceof Wall) {
             if (getHeight() >= o.obstruct()) {
-                log.info("Robot " + this.name + " can jump");
+                log.info("Robot " + this.name + " can jump " + ((Wall) o).getHeight());
+                return true;
             } else {
-                log.info("Robot " + this.name + " cant jump");
+                log.info("Robot " + this.name + " cant jump. Still need " + (((Wall) o).getHeight() - this.getHeight()));
+                return false;
             }
         }
+        return false;
     }
 
     public int getDistance() {

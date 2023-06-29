@@ -12,5 +12,5 @@ public interface Moveable {
 
     int getHeight();
 
-    void overcome(Obstructive o);
+    boolean overcome(Obstructive o);
 }

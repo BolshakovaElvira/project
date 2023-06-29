@@ -29,20 +29,26 @@ public class Human implements Moveable {
         return name;
     }
 
-    public void overcome(Obstructive o) {
+    @Override
+    public boolean overcome(Obstructive o) {
         if (o instanceof Track) {
             if (getDistance() >= o.obstruct()) {
-                log.info("Human " + this.name + " can run");
+                log.info("Human " + this.name + " can run " + ((Track) o).getDistance());
+                return true;
             } else {
-                log.info("Human " + this.name + " cant run");
+                log.info("Human " + this.name + " cant run. Still need " + (((Track) o).getDistance() - this.getDistance()));
+                return false;
             }
         } else if (o instanceof Wall) {
             if (getHeight() >= o.obstruct()) {
-                log.info("Human " + this.name + " can jump");
+                log.info("Human " + this.name + " can jump " + ((Wall) o).getHeight());
+                return true;
             } else {
-                log.info("Human " + this.name + " cant jump");
+                log.info("Human " + this.name + " cant jump. Still need " + (((Wall) o).getHeight() - this.getHeight()));
+                return false;
             }
         }
+        return false;
     }
 
     public int getDistance() {
