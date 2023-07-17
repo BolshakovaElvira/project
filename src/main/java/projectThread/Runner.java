@@ -12,7 +12,7 @@ public class Runner {
         Arrays.fill(arr, 1);
         method1(arr);
         method2(arr);
-        
+
     }
 
     private static void method1(float[] arr) {
@@ -33,7 +33,7 @@ public class Runner {
         long a = System.currentTimeMillis();
         Runnable runnable1 = new Runnable() {
             @Override
-            public void run() {
+            synchronized public void run() {
                 for (int i = 0; i < arr1.length; i++) {
                     arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
@@ -41,7 +41,7 @@ public class Runner {
         };
         Runnable runnable2 = new Runnable() {
             @Override
-            public void run() {
+            synchronized public void run() {
                 for (int i = 0; i < arr2.length; i++) {
                     arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
