@@ -35,7 +35,7 @@ public class Runner {
             @Override
             synchronized public void run() {
                 for (int i = 0; i < arr1.length; i++) {
-                    arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                    arr1[i] = (float) (arr1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
             }
         };
@@ -43,7 +43,7 @@ public class Runner {
             @Override
             synchronized public void run() {
                 for (int i = 0; i < arr2.length; i++) {
-                    arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                    arr2[i] = (float) (arr2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
             }
         };
