@@ -12,16 +12,14 @@ public class Cinema {
     }
 
     public void getByYear(int year) {
-        ArrayList<Film> list;
-        list = films.get(year);
+        ArrayList<Film> list = films.get(year);
         for (Film film : list) {
             System.out.println(film);
         }
     }
 
     public void getByYearMonth(int year, int month) {
-        ArrayList<Film> list;
-        list = films.get(year);
+        ArrayList<Film> list = films.get(year);
         for (Film film : list) {
             if (film.getMonth() == month) {
                 System.out.println(film);
@@ -30,34 +28,37 @@ public class Cinema {
     }
 
     public void getByGenre(String genre) {
-        for (Map.Entry<Integer, ArrayList<Film>> entry : films.entrySet()) {
-            ArrayList<Film> list = entry.getValue();
-            for (Film film : list) {
+        Collection<ArrayList<Film>> list = films.values();
+        for (ArrayList<Film> filmArrayList : list) {
+            for (Film film : filmArrayList) {
                 if (film.getGenre().equals(genre)) {
                     System.out.println(film);
                 }
             }
-
         }
     }
 
     public void getTop() {
-        ArrayList<Film> list = new ArrayList<>();
-        for (Map.Entry<Integer, ArrayList<Film>> entry : films.entrySet()) {
-            for (Film f : entry.getValue()) {
-                list.add(f);
+        Collection<ArrayList<Film>> list = films.values();
+        ArrayList<Film> sortList = new ArrayList<>();
+        for (ArrayList<Film> filmArrayList : list) {
+            for (Film film : filmArrayList) {
+                sortList.add(film);
             }
         }
-        list.sort(Comparator.comparing(Film::getRating).reversed());
-        for (Film film : list) {
-            System.out.println(film);
+
+        sortList.sort(Comparator.comparing(Film::getRating).reversed());
+        
+        for (int i = 0; i < 10; i++) {
+            System.out.println(sortList.get(i));
         }
+
     }
 
     private boolean isExist(Film film) {
-        for (Map.Entry<Integer, ArrayList<Film>> entry : films.entrySet()) {
-            ArrayList<Film> list = entry.getValue();
-            for (Film f : list) {
+        Collection<ArrayList<Film>> list = films.values();
+        for (ArrayList<Film> filmArrayList : list) {
+            for (Film f : filmArrayList) {
                 if (f.equals(film)) {
                     return true;
                 }
@@ -65,6 +66,7 @@ public class Cinema {
         }
         return false;
     }
+
 
     @Override
     public String toString() {
