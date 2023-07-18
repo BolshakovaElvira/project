@@ -8,25 +8,22 @@ public class Runner {
     private static float[] arr = new float[size];
 
     public static void main(String[] args) {
-        
+        long a = System.currentTimeMillis();
         method1(arr);
+        System.out.println(System.currentTimeMillis()-a);
+        long b = System.currentTimeMillis();
         method2(arr);
-
+        System.out.println(System.currentTimeMillis()-b);
     }
 
     private static void method1(float[] arr) {
-        long a = System.currentTimeMillis();
         Arrays.fill(arr, 1);
         for (int i = 0; i < size; i++) {
             arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
-
-        System.out.println(System.currentTimeMillis() - a);
     }
 
     public static void method2(float[] arr) {
-
-        long a = System.currentTimeMillis();
         Arrays.fill(arr, 1);
         Runnable runnable1 = new Runnable() {
             @Override
@@ -56,10 +53,11 @@ public class Runner {
         thread1.start();
         thread2.start();
 
-
-
-        System.out.println(System.currentTimeMillis()-a);
-
-
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
