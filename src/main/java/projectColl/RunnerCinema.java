@@ -27,7 +27,8 @@ public class RunnerCinema {
         cinema.add(film10);
         cinema.add(film11);
 
-        cinema.getTop();
+        //cinema.getTop();
+        cinema.getByYear(2023);
 
 
     }

@@ -12,15 +12,13 @@ public class Cinema {
     }
 
     public void getByYear(int year) {
-        ArrayList<Film> list = films.get(year);
-        for (Film film : list) {
+        for (Film film : films.get(year)) {
             System.out.println(film);
         }
     }
 
     public void getByYearMonth(int year, int month) {
-        ArrayList<Film> list = films.get(year);
-        for (Film film : list) {
+        for (Film film : films.get(year)) {
             if (film.getMonth() == month) {
                 System.out.println(film);
             }
@@ -28,9 +26,8 @@ public class Cinema {
     }
 
     public void getByGenre(String genre) {
-        Collection<ArrayList<Film>> list = films.values();
-        for (ArrayList<Film> filmArrayList : list) {
-            for (Film film : filmArrayList) {
+        for (List<Film> filmList : films.values()) {
+            for (Film film : filmList) {
                 if (film.getGenre().equals(genre)) {
                     System.out.println(film);
                 }
@@ -39,16 +36,15 @@ public class Cinema {
     }
 
     public void getTop() {
-        Collection<ArrayList<Film>> list = films.values();
-        ArrayList<Film> sortList = new ArrayList<>();
-        for (ArrayList<Film> filmArrayList : list) {
-            for (Film film : filmArrayList) {
+        List<Film> sortList = new ArrayList<>();
+        for (List<Film> filmList : films.values()) {
+            for (Film film : filmList) {
                 sortList.add(film);
             }
         }
 
         sortList.sort(Comparator.comparing(Film::getRating).reversed());
-        
+
         for (int i = 0; i < 10; i++) {
             System.out.println(sortList.get(i));
         }
@@ -56,9 +52,8 @@ public class Cinema {
     }
 
     private boolean isExist(Film film) {
-        Collection<ArrayList<Film>> list = films.values();
-        for (ArrayList<Film> filmArrayList : list) {
-            for (Film f : filmArrayList) {
+        for (List<Film> filmList : films.values()) {
+            for (Film f : filmList) {
                 if (f.equals(film)) {
                     return true;
                 }
